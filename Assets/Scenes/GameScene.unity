@@ -606,7 +606,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1100, y: 0}
+  m_AnchoredPosition: {x: 1099.5, y: 0}
   m_SizeDelta: {x: 1100, y: 550}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1535065158
@@ -818,7 +818,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c01f4e0564e2b034a8a25b9237ae879c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BackGroundManager
-  scrollSpeed: 50
+  scrollSpeed: 55
   backG1: {fileID: 984610284}
   backG2: {fileID: 1535065156}
 --- !u!1660057539 &9223372036854775807
