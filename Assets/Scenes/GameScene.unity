@@ -526,6 +526,7 @@ GameObject:
   - component: {fileID: 1167687435}
   - component: {fileID: 1167687437}
   - component: {fileID: 1167687436}
+  - component: {fileID: 1167687438}
   m_Layer: 5
   m_Name: jumpDirectionIcon
   m_TagString: Untagged
@@ -540,13 +541,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1167687434}
-  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 555520912}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -50, y: -43}
@@ -572,7 +573,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f395c8b522f6e4c488a04f2af28b91c7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 60dd71f6dc25d884383fd74a1030fd3b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -590,6 +591,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1167687434}
   m_CullTransparentMesh: 1
+--- !u!114 &1167687438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1167687434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc9684408c017c9489de24ac02ff9936, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::JumpIcon
+  jumpIconImage: {fileID: 1167687436}
 --- !u!1 &1405443481
 GameObject:
   m_ObjectHideFlags: 0
@@ -679,6 +693,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerScript
   playerImage: {fileID: 1405443483}
+  backGroundManager: {fileID: 2052148283}
   dashSprites:
   - {fileID: 21300000, guid: 4a587e1c913636f4c812f857e5aa6c84, type: 3}
   - {fileID: 21300000, guid: c9c8166c52da6634eb2eaee5eb18d77a, type: 3}
@@ -1122,6 +1137,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 367fef7c7a0cf8b4e8fc2020259965e9, type: 3}
   - {fileID: 21300000, guid: 429517ea1b1287a47952cd5cd8261d74, type: 3}
   spriteNums: 000000000000000000000000
+  jumpKey: 0
+  jumpIcon: {fileID: 1167687438}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

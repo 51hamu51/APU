@@ -6,6 +6,7 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private Image playerImage;
     private float time;
     private Vector3 playerDefaultPos;
+    public BackGroundManager backGroundManager;
 
     [Header("dash")]
     [SerializeField] private Sprite[] dashSprites;
@@ -88,7 +89,7 @@ public class PlayerScript : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && !isJumping)
+        if (Input.GetKeyDown(backGroundManager.jumpKey) && !isJumping)
         {
             isJumping = true;
             jumpNum = 0;

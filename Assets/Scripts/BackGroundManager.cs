@@ -11,9 +11,12 @@ public class BackGroundManager : MonoBehaviour
     public int headNum;
     [SerializeField] private Sprite[] backSprites;
     public int[] spriteNums = new int[3];
+    public KeyCode jumpKey;
+    public JumpIcon jumpIcon;
 
     void Start()
     {
+        jumpKey = KeyCode.UpArrow;
         headNum = 0;
         startPos = backGs[1].transform.position;
         prePos = backGs[2].transform.position;
@@ -49,6 +52,34 @@ public class BackGroundManager : MonoBehaviour
         int rand = Random.Range(0, 4);
         backGs[(headNum + 2) % 3].sprite = backSprites[rand];
         spriteNums[(headNum + 2) % 3] = rand;
+        KeyChange();
+    }
+
+    /// <summary>
+    /// 操作方法の変更
+    /// </summary>
+    private void KeyChange()
+    {
+        switch (spriteNums[(headNum + 1) % 3])
+        {
+            case 0:
+                jumpKey = KeyCode.UpArrow;
+                break;
+
+            case 1:
+                jumpKey = KeyCode.LeftArrow;
+                break;
+
+            case 2:
+                jumpKey = KeyCode.DownArrow;
+                break;
+
+            case 3:
+                jumpKey = KeyCode.RightArrow;
+                break;
+
+        }
+        jumpIcon.RotateIcon(jumpKey);
     }
 }
 
