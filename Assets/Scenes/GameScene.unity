@@ -309,7 +309,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f41ebe1309c4344d87fbc60c4fc0013, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerScript
-  image: {fileID: 1405443483}
+  playerImage: {fileID: 1405443483}
   dashSprites:
   - {fileID: 21300000, guid: 4a587e1c913636f4c812f857e5aa6c84, type: 3}
   - {fileID: 21300000, guid: c9c8166c52da6634eb2eaee5eb18d77a, type: 3}
@@ -317,7 +317,13 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 5f35e0dbf73e2bd4bb8189fcd03962b3, type: 3}
   - {fileID: 21300000, guid: 950268a606733494f8e4b356b0100a41, type: 3}
   - {fileID: 21300000, guid: 969fce9da2f69834182f5618b7ec2975, type: 3}
-  dashInterval: 0.2
+  dashInterval: 0.13
+  jumpSprites:
+  - {fileID: 21300000, guid: 7aa182603b724964d971bbfdfa1d309d, type: 3}
+  - {fileID: 21300000, guid: 355f117cc929dbb43875dd51720e2e64, type: 3}
+  jumpInterval: 0.5
+  jumpForce: 600
+  jumpGravity: -1400
 --- !u!1 &1417779451
 GameObject:
   m_ObjectHideFlags: 0
