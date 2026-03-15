@@ -10,6 +10,11 @@ public class SpikeScript : MonoBehaviour
 
     void Update()
     {
+        if (BackGroundManager.Instance.isPlayerDead)
+        {
+            return;
+        }
+
         transform.position += Vector3.left * speed * Time.deltaTime;
 
         if (transform.position.x <= -700)

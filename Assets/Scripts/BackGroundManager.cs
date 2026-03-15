@@ -18,6 +18,7 @@ public class BackGroundManager : MonoBehaviour
     public float distance;
     [SerializeField] private TextMeshProUGUI distanceText;
     [SerializeField] private float distanceScale;
+    public bool isPlayerDead;
 
     public static BackGroundManager Instance;
 
@@ -41,6 +42,11 @@ public class BackGroundManager : MonoBehaviour
 
     void Update()
     {
+        if (BackGroundManager.Instance.isPlayerDead)
+        {
+            return;
+        }
+
         distance += distanceScale * scrollSpeed * Time.deltaTime;
         distanceText.SetText("{0:1}", distance);
 
@@ -102,7 +108,7 @@ public class BackGroundManager : MonoBehaviour
 
     private void ResetGame()
     {
-        Time.timeScale = 1f;
+        isPlayerDead = false;
         jumpKey = KeyCode.UpArrow;
         headNum = 0;
         startPos = backGs[1].transform.position;

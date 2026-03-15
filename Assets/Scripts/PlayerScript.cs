@@ -49,6 +49,11 @@ public class PlayerScript : MonoBehaviour
 
     void Update()
     {
+        if (BackGroundManager.Instance.isPlayerDead)
+        {
+            return;
+        }
+
         time += Time.deltaTime;
 
         if (isJumping)
@@ -134,7 +139,7 @@ public class PlayerScript : MonoBehaviour
 
     void GameOver()
     {
-        Time.timeScale = 0f;
+        BackGroundManager.Instance.isPlayerDead = true;
         resultDistanceText.SetText("{0:1}", BackGroundManager.Instance.distance);
         ResultPanel.SetActive(true);
 

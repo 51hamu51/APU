@@ -16,6 +16,11 @@ public class SpikeManager : MonoBehaviour
 
     void Update()
     {
+        if (BackGroundManager.Instance.isPlayerDead)
+        {
+            return;
+        }
+
         time += Time.deltaTime;
 
         if (targetTime <= time)
