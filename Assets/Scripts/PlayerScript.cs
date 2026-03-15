@@ -6,6 +6,8 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private Image playerImage;
     private float time;
     private Vector3 playerDefaultPos;
+    public int maxHitPoint;
+    private int hitPoint;
 
     [Header("dash")]
     [SerializeField] private Sprite[] dashSprites;
@@ -32,6 +34,7 @@ public class PlayerScript : MonoBehaviour
         dashNum = 0;
         jumpNum = 0;
         playerImage.sprite = dashSprites[dashNum];
+        hitPoint = maxHitPoint;
     }
 
     void Update()
@@ -102,7 +105,18 @@ public class PlayerScript : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             Debug.Log("Damage");
+            hitPoint--;
+            if (hitPoint <= 0)
+            {
+                Debug.Log("Dead");
+                GameOver();
+            }
         }
 
+    }
+
+    void GameOver()
+    {
+        Time.timeScale = 0f;
     }
 }

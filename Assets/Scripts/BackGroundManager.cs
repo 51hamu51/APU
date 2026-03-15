@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class BackGroundManager : MonoBehaviour
 {
@@ -13,6 +14,9 @@ public class BackGroundManager : MonoBehaviour
     public int[] spriteNums = new int[3];
     public KeyCode jumpKey;
     public JumpIcon jumpIcon;
+    private float distance;
+    [SerializeField] private TextMeshProUGUI distanceText;
+    [SerializeField] private float distanceScale;
 
     public static BackGroundManager Instance;
 
@@ -35,6 +39,7 @@ public class BackGroundManager : MonoBehaviour
         headNum = 0;
         startPos = backGs[1].transform.position;
         prePos = backGs[2].transform.position;
+        distance = 0;
 
         backGs[0].sprite = backSprites[0];
         spriteNums[0] = 0;
@@ -46,6 +51,9 @@ public class BackGroundManager : MonoBehaviour
 
     void Update()
     {
+        distance += distanceScale * scrollSpeed * Time.deltaTime;
+        distanceText.SetText("{0:1}", distance);
+
         for (int i = 0; i < backGs.Length; i++)
         {
             backGs[i].transform.position += Vector3.left * scrollSpeed * Time.deltaTime;
