@@ -11,6 +11,7 @@ public class PlayerScript : MonoBehaviour
     private int hitPoint;
     [SerializeField] private TextMeshProUGUI resultDistanceText;
     [SerializeField] private GameObject ResultPanel;
+    [SerializeField] private GameObject[] hearts = new GameObject[3];
 
     [Header("dash")]
     [SerializeField] private Sprite[] dashSprites;
@@ -39,6 +40,11 @@ public class PlayerScript : MonoBehaviour
         playerImage.sprite = dashSprites[dashNum];
         hitPoint = maxHitPoint;
         ResultPanel.SetActive(false);
+
+        for (int i = 0; i < 3; i++)
+        {
+            hearts[i].SetActive(true);
+        }
     }
 
     void Update()
@@ -108,11 +114,18 @@ public class PlayerScript : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            Debug.Log("Damage");
             hitPoint--;
-            if (hitPoint <= 0)
+            if (hitPoint < 3)
             {
-                Debug.Log("Dead");
+                hearts[2].SetActive(false);
+            }
+            if (hitPoint < 2)
+            {
+                hearts[1].SetActive(false);
+            }
+            if (hitPoint < 1)
+            {
+                hearts[0].SetActive(false);
                 GameOver();
             }
         }
