@@ -115,17 +115,17 @@ public class PlayerScript : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             hitPoint--;
-            if (hitPoint < 3)
+            if (hitPoint == 2)
             {
-                hearts[2].SetActive(false);
+                hearts[2].GetComponent<Heart>().FadeOut();
             }
-            if (hitPoint < 2)
+            if (hitPoint == 1)
             {
-                hearts[1].SetActive(false);
+                hearts[1].GetComponent<Heart>().FadeOut();
             }
             if (hitPoint < 1)
             {
-                hearts[0].SetActive(false);
+                hearts[0].GetComponent<Heart>().FadeOut();
                 GameOver();
             }
         }
