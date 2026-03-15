@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class BackGroundManager : MonoBehaviour
 {
@@ -14,7 +15,7 @@ public class BackGroundManager : MonoBehaviour
     public int[] spriteNums = new int[3];
     public KeyCode jumpKey;
     public JumpIcon jumpIcon;
-    private float distance;
+    public float distance;
     [SerializeField] private TextMeshProUGUI distanceText;
     [SerializeField] private float distanceScale;
 
@@ -35,18 +36,7 @@ public class BackGroundManager : MonoBehaviour
 
     void Start()
     {
-        jumpKey = KeyCode.UpArrow;
-        headNum = 0;
-        startPos = backGs[1].transform.position;
-        prePos = backGs[2].transform.position;
-        distance = 0;
-
-        backGs[0].sprite = backSprites[0];
-        spriteNums[0] = 0;
-        backGs[1].sprite = backSprites[0];
-        spriteNums[1] = 0;
-        backGs[2].sprite = backSprites[0];
-        spriteNums[2] = 0;
+        ResetGame();
     }
 
     void Update()
@@ -109,6 +99,31 @@ public class BackGroundManager : MonoBehaviour
     {
         return scrollSpeed;
     }
+
+    private void ResetGame()
+    {
+        Time.timeScale = 1f;
+        jumpKey = KeyCode.UpArrow;
+        headNum = 0;
+        startPos = backGs[1].transform.position;
+        prePos = backGs[2].transform.position;
+        distance = 0;
+
+        backGs[0].sprite = backSprites[0];
+        spriteNums[0] = 0;
+        backGs[1].sprite = backSprites[0];
+        spriteNums[1] = 0;
+        backGs[2].sprite = backSprites[0];
+        spriteNums[2] = 0;
+    }
+
+    public void NewGame()
+    {
+        ResetGame();
+        SceneManager.LoadScene("GameScene");
+    }
+
+
 }
 
 

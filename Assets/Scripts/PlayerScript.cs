@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class PlayerScript : MonoBehaviour
     private Vector3 playerDefaultPos;
     public int maxHitPoint;
     private int hitPoint;
+    [SerializeField] private TextMeshProUGUI resultDistanceText;
+    [SerializeField] private GameObject ResultPanel;
 
     [Header("dash")]
     [SerializeField] private Sprite[] dashSprites;
@@ -35,6 +38,7 @@ public class PlayerScript : MonoBehaviour
         jumpNum = 0;
         playerImage.sprite = dashSprites[dashNum];
         hitPoint = maxHitPoint;
+        ResultPanel.SetActive(false);
     }
 
     void Update()
@@ -118,5 +122,8 @@ public class PlayerScript : MonoBehaviour
     void GameOver()
     {
         Time.timeScale = 0f;
+        resultDistanceText.SetText("{0:1}", BackGroundManager.Instance.distance);
+        ResultPanel.SetActive(true);
+
     }
 }
