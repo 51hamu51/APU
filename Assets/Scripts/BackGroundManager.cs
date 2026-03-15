@@ -19,8 +19,17 @@ public class BackGroundManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI distanceText;
     [SerializeField] private float distanceScale;
     public bool isPlayerDead;
+    private int whatSprite;
 
     public static BackGroundManager Instance;
+
+    public KeyCode[] keys = {
+    KeyCode.A, KeyCode.B, KeyCode.C, KeyCode.D, KeyCode.E, KeyCode.F,
+    KeyCode.G, KeyCode.H, KeyCode.I, KeyCode.J, KeyCode.K, KeyCode.L,
+    KeyCode.M, KeyCode.N, KeyCode.O, KeyCode.P, KeyCode.Q, KeyCode.R,
+    KeyCode.S, KeyCode.T, KeyCode.U, KeyCode.V, KeyCode.W, KeyCode.X,
+    KeyCode.Y, KeyCode.Z
+};
 
     void Awake()
     {
@@ -69,8 +78,14 @@ public class BackGroundManager : MonoBehaviour
     private void EnvironmentChange()
     {
         int rand = Random.Range(0, 4);
+        while (rand == whatSprite)
+        {
+            rand = Random.Range(0, 4);
+        }
+        whatSprite = rand;
+        int rand2 = Random.Range(0, 26);
         backGs[(headNum + 2) % 3].sprite = backSprites[rand];
-        spriteNums[(headNum + 2) % 3] = rand;
+        spriteNums[(headNum + 2) % 3] = rand2;
         KeyChange();
     }
 
@@ -79,26 +94,9 @@ public class BackGroundManager : MonoBehaviour
     /// </summary>
     private void KeyChange()
     {
-        switch (spriteNums[(headNum + 1) % 3])
-        {
-            case 0:
-                jumpKey = KeyCode.UpArrow;
-                break;
-
-            case 1:
-                jumpKey = KeyCode.LeftArrow;
-                break;
-
-            case 2:
-                jumpKey = KeyCode.DownArrow;
-                break;
-
-            case 3:
-                jumpKey = KeyCode.RightArrow;
-                break;
-
-        }
-        jumpIcon.RotateIcon(jumpKey);
+        jumpKey = keys[spriteNums[(headNum + 1) % 3]];
+        jumpIcon.ChangeDisplay(spriteNums[(headNum + 1) % 3]);
+        jumpIcon.ChangeNextDisplay(spriteNums[(headNum + 2) % 3]);
     }
 
     public float GetScrollSpeed()
@@ -109,7 +107,7 @@ public class BackGroundManager : MonoBehaviour
     private void ResetGame()
     {
         isPlayerDead = false;
-        jumpKey = KeyCode.UpArrow;
+        jumpKey = KeyCode.A;
         headNum = 0;
         startPos = backGs[1].transform.position;
         prePos = backGs[2].transform.position;
@@ -121,6 +119,7 @@ public class BackGroundManager : MonoBehaviour
         spriteNums[1] = 0;
         backGs[2].sprite = backSprites[0];
         spriteNums[2] = 0;
+        whatSprite = 0;
     }
 
     public void NewGame()
@@ -131,6 +130,3 @@ public class BackGroundManager : MonoBehaviour
 
 
 }
-
-
-//spriteNums[(headNum + 1) % 3]が現在のプレイヤーが見えている景色

@@ -1,12 +1,15 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class JumpIcon : MonoBehaviour
 {
-    [SerializeField] private Image jumpIconImage;
+    [SerializeField] private TextMeshProUGUI displayText;
+    [SerializeField] private TextMeshProUGUI nextDisplayText;
     void Start()
     {
-        jumpIconImage.transform.eulerAngles = new Vector3(0, 0, 0);
+        displayText.text = "A";
+        nextDisplayText.text = "A";
     }
 
     void Update()
@@ -14,18 +17,20 @@ public class JumpIcon : MonoBehaviour
 
     }
 
-    public void RotateIcon(KeyCode keyCode)
+    public void ChangeDisplay(int keyNum)
     {
-        float angle = 0;
-
-        switch (keyCode)
+        if (keyNum >= 0 && keyNum < 26)
         {
-            case KeyCode.UpArrow: angle = 0; break;
-            case KeyCode.LeftArrow: angle = 90; break;
-            case KeyCode.DownArrow: angle = 180; break;
-            case KeyCode.RightArrow: angle = 270; break;
+            char letter = (char)('A' + keyNum);
+            displayText.text = letter.ToString();
         }
-
-        jumpIconImage.transform.eulerAngles = new Vector3(0, 0, angle);
+    }
+    public void ChangeNextDisplay(int keyNum)
+    {
+        if (keyNum >= 0 && keyNum < 26)
+        {
+            char letter = (char)('A' + keyNum);
+            nextDisplayText.text = letter.ToString();
+        }
     }
 }
