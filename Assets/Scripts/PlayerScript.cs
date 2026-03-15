@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using unityroom.Api;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -141,6 +142,8 @@ public class PlayerScript : MonoBehaviour
     {
         BackGroundManager.Instance.isPlayerDead = true;
         resultDistanceText.SetText("{0:1}", BackGroundManager.Instance.distance);
+        UnityroomApiClient.Instance.SendScore(1, BackGroundManager.Instance.distance, ScoreboardWriteMode.HighScoreDesc);
+
         ResultPanel.SetActive(true);
 
     }
