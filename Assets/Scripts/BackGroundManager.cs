@@ -14,6 +14,21 @@ public class BackGroundManager : MonoBehaviour
     public KeyCode jumpKey;
     public JumpIcon jumpIcon;
 
+    public static BackGroundManager Instance;
+
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+
     void Start()
     {
         jumpKey = KeyCode.UpArrow;
@@ -80,6 +95,11 @@ public class BackGroundManager : MonoBehaviour
 
         }
         jumpIcon.RotateIcon(jumpKey);
+    }
+
+    public float GetScrollSpeed()
+    {
+        return scrollSpeed;
     }
 }
 

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8518903678967398151}
   - component: {fileID: 2133729160664522332}
   - component: {fileID: 7171379044663568078}
+  - component: {fileID: 4302562142608840156}
   m_Layer: 5
   m_Name: Spike
   m_TagString: Enemy
@@ -122,3 +123,15 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
+--- !u!114 &4302562142608840156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8897080680907095303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa6f60a493d647741b70a339072942c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpikeScript
