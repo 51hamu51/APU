@@ -33,7 +33,7 @@ public class PlayerScript : MonoBehaviour
 
     void Start()
     {
-        playerDefaultPos = transform.position;
+        playerDefaultPos = transform.localPosition;
         isJumping = false;
         time = 0;
         dashNum = 0;
@@ -61,16 +61,16 @@ public class PlayerScript : MonoBehaviour
         {
             //ジャンプの上下移動
             yVelocity += jumpGravity * Time.deltaTime;
-            transform.position += new Vector3(0, yVelocity * Time.deltaTime, 0);
+            transform.localPosition += new Vector3(0, yVelocity * Time.deltaTime, 0);
 
             //モーションの切り替え
-            if (transform.position.y <= playerDefaultPos.y)
+            if (transform.localPosition.y <= playerDefaultPos.y)
             {
                 isJumping = false;
                 jumpNum = 0;
                 dashNum = 0;
                 playerImage.sprite = dashSprites[dashNum];
-                transform.position = playerDefaultPos;
+                transform.localPosition = playerDefaultPos;
             }
             else if (time > jumpInterval)
             {
@@ -82,7 +82,7 @@ public class PlayerScript : MonoBehaviour
                     jumpNum = 0;
                     dashNum = 0;
                     playerImage.sprite = dashSprites[dashNum];
-                    transform.position = playerDefaultPos;
+                    transform.localPosition = playerDefaultPos;
                 }
                 else
                 {

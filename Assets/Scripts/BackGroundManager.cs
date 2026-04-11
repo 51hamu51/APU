@@ -21,6 +21,9 @@ public class BackGroundManager : MonoBehaviour
     public bool isPlayerDead;
     private int whatSprite;
 
+    public Vector3 realScrollSpeed;
+    [SerializeField] private TextMeshProUGUI speedText;
+
     public static BackGroundManager Instance;
 
     public KeyCode[] keys = {
@@ -30,6 +33,8 @@ public class BackGroundManager : MonoBehaviour
     KeyCode.S, KeyCode.T, KeyCode.U, KeyCode.V, KeyCode.W, KeyCode.X,
     KeyCode.Y, KeyCode.Z
 };
+
+    float deltaTime = 0.0f;
 
     void Awake()
     {
@@ -61,12 +66,15 @@ public class BackGroundManager : MonoBehaviour
 
         for (int i = 0; i < backGs.Length; i++)
         {
-            backGs[i].transform.position += Vector3.left * scrollSpeed * Time.deltaTime;
+            backGs[i].transform.localPosition += Vector3.left * scrollSpeed * Time.deltaTime;
+            realScrollSpeed = Vector3.left * scrollSpeed * Time.deltaTime;
+            speedText.SetText("{0:2}", realScrollSpeed.x);
+
         }
 
-        if (backGs[(headNum + 2) % 3].transform.position.x <= startPos.x)
+        if (backGs[(headNum + 2) % 3].transform.localPosition.x <= startPos.x)
         {
-            backGs[headNum].transform.position = prePos;
+            backGs[headNum].transform.localPosition = prePos;
             headNum = (headNum + 1) % 3;
             EnvironmentChange();
         }
@@ -109,8 +117,8 @@ public class BackGroundManager : MonoBehaviour
         isPlayerDead = false;
         jumpKey = KeyCode.A;
         headNum = 0;
-        startPos = backGs[1].transform.position;
-        prePos = backGs[2].transform.position;
+        startPos = backGs[1].transform.localPosition;
+        prePos = backGs[2].transform.localPosition;
         distance = 0;
 
         backGs[0].sprite = backSprites[0];
@@ -120,6 +128,8 @@ public class BackGroundManager : MonoBehaviour
         backGs[2].sprite = backSprites[0];
         spriteNums[2] = 0;
         whatSprite = 0;
+
+        realScrollSpeed = new Vector3(0, 0, 0);
     }
 
     public void NewGame()

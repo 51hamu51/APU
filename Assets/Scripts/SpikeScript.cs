@@ -15,9 +15,9 @@ public class SpikeScript : MonoBehaviour
             return;
         }
 
-        transform.position += Vector3.left * speed * Time.deltaTime;
+        transform.localPosition += Vector3.left * speed * Time.deltaTime;
 
-        if (transform.position.x <= -700)
+        if (transform.localPosition.x <= -700)
         {
             Destroy(gameObject);
         }
