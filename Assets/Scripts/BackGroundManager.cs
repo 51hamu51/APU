@@ -21,9 +21,6 @@ public class BackGroundManager : MonoBehaviour
     public bool isPlayerDead;
     private int whatSprite;
 
-    public Vector3 realScrollSpeed;
-    [SerializeField] private TextMeshProUGUI speedText;
-
     public static BackGroundManager Instance;
 
     public KeyCode[] keys = {
@@ -67,8 +64,6 @@ public class BackGroundManager : MonoBehaviour
         for (int i = 0; i < backGs.Length; i++)
         {
             backGs[i].transform.localPosition += Vector3.left * scrollSpeed * Time.deltaTime;
-            realScrollSpeed = Vector3.left * scrollSpeed * Time.deltaTime;
-            speedText.SetText("{0:2}", realScrollSpeed.x);
 
         }
 
@@ -128,8 +123,6 @@ public class BackGroundManager : MonoBehaviour
         backGs[2].sprite = backSprites[0];
         spriteNums[2] = 0;
         whatSprite = 0;
-
-        realScrollSpeed = new Vector3(0, 0, 0);
     }
 
     public void NewGame()
