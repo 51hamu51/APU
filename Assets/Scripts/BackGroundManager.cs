@@ -31,7 +31,6 @@ public class BackGroundManager : MonoBehaviour
     KeyCode.Y, KeyCode.Z
 };
 
-    float deltaTime = 0.0f;
 
     void Awake()
     {

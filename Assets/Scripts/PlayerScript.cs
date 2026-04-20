@@ -30,6 +30,9 @@ public class PlayerScript : MonoBehaviour
     private float yVelocity;
 
 
+    [SerializeField] private DamageEffect damageEffect;
+
+
 
     void Start()
     {
@@ -120,6 +123,7 @@ public class PlayerScript : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
+            damageEffect.Damage();
             hitPoint--;
             if (hitPoint == 2)
             {
